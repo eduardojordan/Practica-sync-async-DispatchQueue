@@ -1,0 +1,6 @@
+framework module Pods_ConcurrencySample2 {
+  umbrella header "Pods-ConcurrencySample2-umbrella.h"
+
+  export *
+  module * { export * }
+}

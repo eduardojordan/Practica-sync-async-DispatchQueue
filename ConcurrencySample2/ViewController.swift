@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 let imageURL01 = "https://image.tmdb.org/t/p/original/cezWGskPY5x7GaglTTRN4Fugfb8.jpg"
 let imageURL02 = "https://image.tmdb.org/t/p/original/t90Y3G8UGQp0f0DrP60wRu9gfrH.jpg"
@@ -33,6 +34,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             syncFilterButton.isEnabled = false
+        dispatchAsync()
+        dispatchSync()
        
         
     }
@@ -50,7 +53,7 @@ class ViewController: UIViewController {
     
     @IBAction func privateQueueDownload(_ sender: Any) {
         
-        //Definimos el Queue SERIAL QUEUE  ---->>
+        //Definimos el Queue --->SERIAL QUEUE  ---->>
         // La cola del cine del verano , una ventanilla de uno en uno
         
         let mySerialQueue = DispatchQueue(label: "io.keepcoding")
@@ -108,7 +111,7 @@ class ViewController: UIViewController {
     
     @IBAction func privateQueueConcurrence(_ sender: Any) {
         
-        //QUEUE  CONCURRENTE
+        //----->QUEUE SERIAL CONCURRENTE
         // VAn simultaneamente cada uno por su carril
         
   //      let myConcurrentQueue = DispatchQueue(label: "io.keepcooding concurrente",  attributes: .concurrent)
@@ -184,11 +187,66 @@ class ViewController: UIViewController {
     }
     
     
-    
+    // 
     @IBAction func asyncDataDownload(_ sender: Any) {
+//        let asyncData1 = AsyncData(
+//        url: URL (string: imageURL01)!,
+//        id: "image01",
+//        defaultData: UIImage(named: "Placeholder")!.pngData()!)
+//        asyncData1.delegate = self
+//        asyncData1.execute()
+        
+//        let asyncData1: Async<Data> = Async<Data>(
+//            url: URL(string: imageURL01)!,
+//            id: "image01",
+//            defaultData: UIImage(named: "Placeholder")!.pngData()!)
+//        asyncData1.load { data in
+//            let image = UIImage(data: data)
+//            DispatchQueue.main.async { [weak self] in
+//                self?.image01.image = image
+//            }
+//        }
+        
+        
+        let asyncData1: Async<AsyncImage> = Async<AsyncImage>(url: URL(string: imageURL01)!,id: "image01", defaultData: #imageLiteral(resourceName: "Placeholder.png"))
+        asyncData1.load { image in
+            DispatchQueue.main.async { [weak self] in
+                self?.image01.image = image
+            }
+        }
+        
     }
+        
+     
     
     
+//NSRULSesion
+    @IBAction func UrlSesionDownload(_ sender: Any) {
+        
+        let url = URL(string: imageURL01)
+        let session = URLSession.shared
+        let request = URLRequest(url: url!)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { print("No hay data"); return }
+            let image = UIImage(data: data)
+            DispatchQueue.main.async { [weak self] in
+                self?.image01.image = image
+            }
+        }
+        
+        let task2 = session.dataTask(with: url!) { (data, response, error) in
+            guard let data = data else { print("No hay data"); return }
+            let image = UIImage(data: data)
+            DispatchQueue.main.async { [weak self] in
+                self?.image01.image = image
+            }
+        }
+        
+        task2.resume()
+        //        task.resume()
+    
+    }
     @IBAction func synfilter(_ sender: Any) {
         
         print (" Deberia aplicar el filtro")
@@ -258,8 +316,79 @@ class ViewController: UIViewController {
         serialFilterQueue.addOperation(sepia0p5)
         serialFilterQueue.addOperation(sepia0p6)
         }
+    
+    // EJEMPLO ASINCRONO
+    func dispatchAsync(){
+        let serialQueue = DispatchQueue(label: "io.Keepcoding.serial")
+        var value = 42
+        func changeValue (){
+            sleep(1)
+            value = 0
+        }
+        
+        serialQueue.async{
+            changeValue()
+        }
+        print(" ******Dispatch******")
+        print(value)
     }
     
+    // EJEMPLO SINCRONO
+    // Atencion con este metodo pues Espera que carge la funcion anterior antes de salir
+    func dispatchSync(){
+        let serialQueue = DispatchQueue(label: "io.Keepcoding.serial")
+        var value = 0
+        func changeValue (){
+            sleep(1)
+            value = 0
+        }
+        
+        serialQueue.sync{
+            changeValue()
+        }
+        print(" ******Dispatch******")
+        print(value)
+    }
     
+    //Alamofire
+    @IBAction func alamofire(_ sender: Any) {
+        let url1 = URL(string: imageURL01)!
+        self.image01.setImage(with: url1)
+        
+        
+        
+    }
+}
 
+
+// implementacion del delegado
+extension ViewController: AsyncDataDelegate {
+    func asyncData(_ sender: AsyncData, didEndLoadingFrom url: URL) {
+        let data = sender.data
+        let image = UIImage(data: data)
+        
+        switch sender.id {
+        case "image01":
+            DispatchQueue.main.async {
+                self.image01.image = image
+            }
+        default:
+            break
+        }
+    }
+}
+
+
+private extension UIImageView{
+    func setImage(with url:URL){
+        Alamofire.request(url).responseData {(response) in
+            let image = UIImage(data: response.data!)
+            DispatchQueue.main.async {
+                self.image = image
+            }
+            
+            }
+    }
+    
+}
 

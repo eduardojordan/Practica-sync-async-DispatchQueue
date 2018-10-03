@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		844FB7A7C3D24DF05532D3D2 /* Pods_ConcurrencySample2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0656633D1EF36AA0283EA75 /* Pods_ConcurrencySample2.framework */; };
 		A005FB46216378550085AA62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A005FB45216378550085AA62 /* AppDelegate.swift */; };
 		A005FB48216378550085AA62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A005FB47216378550085AA62 /* ViewController.swift */; };
 		A005FB4B216378550085AA62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A005FB49216378550085AA62 /* Main.storyboard */; };
@@ -14,9 +15,12 @@
 		A005FB50216378590085AA62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A005FB4E216378590085AA62 /* LaunchScreen.storyboard */; };
 		A0246ABC21637DAD006D7F0C /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = A0246ABB21637DAD006D7F0C /* Placeholder.png */; };
 		A0246ABE216397BE006D7F0C /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0246ABD216397BD006D7F0C /* ImageFilter.swift */; };
+		A0F81FD32163F6930023F250 /* AsyncData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F81FD22163F6930023F250 /* AsyncData.swift */; };
+		A0F81FD72164039D0023F250 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F81FD62164039D0023F250 /* Async.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		959DC7E1AAD84CA7FB91F5D1 /* Pods-ConcurrencySample2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcurrencySample2.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConcurrencySample2/Pods-ConcurrencySample2.release.xcconfig"; sourceTree = "<group>"; };
 		A005FB42216378550085AA62 /* ConcurrencySample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcurrencySample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A005FB45216378550085AA62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A005FB47216378550085AA62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +30,10 @@
 		A005FB51216378590085AA62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0246ABB21637DAD006D7F0C /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		A0246ABD216397BD006D7F0C /* ImageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFilter.swift; sourceTree = "<group>"; };
+		A0656633D1EF36AA0283EA75 /* Pods_ConcurrencySample2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcurrencySample2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0F81FD22163F6930023F250 /* AsyncData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncData.swift; sourceTree = "<group>"; };
+		A0F81FD62164039D0023F250 /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		BA30C87F663DB75359209201 /* Pods-ConcurrencySample2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcurrencySample2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConcurrencySample2/Pods-ConcurrencySample2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844FB7A7C3D24DF05532D3D2 /* Pods_ConcurrencySample2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		561287F29D686089724E17C7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA30C87F663DB75359209201 /* Pods-ConcurrencySample2.debug.xcconfig */,
+				959DC7E1AAD84CA7FB91F5D1 /* Pods-ConcurrencySample2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		707868C5028B6656D7E3477A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0656633D1EF36AA0283EA75 /* Pods_ConcurrencySample2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A005FB39216378550085AA62 = {
 			isa = PBXGroup;
 			children = (
 				A005FB44216378550085AA62 /* ConcurrencySample2 */,
 				A005FB43216378550085AA62 /* Products */,
+				561287F29D686089724E17C7 /* Pods */,
+				707868C5028B6656D7E3477A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +86,8 @@
 		A005FB44216378550085AA62 /* ConcurrencySample2 */ = {
 			isa = PBXGroup;
 			children = (
+				A0F81FD62164039D0023F250 /* Async.swift */,
+				A0F81FD22163F6930023F250 /* AsyncData.swift */,
 				A0246ABD216397BD006D7F0C /* ImageFilter.swift */,
 				A005FB45216378550085AA62 /* AppDelegate.swift */,
 				A005FB47216378550085AA62 /* ViewController.swift */,
@@ -77,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A005FB54216378590085AA62 /* Build configuration list for PBXNativeTarget "ConcurrencySample2" */;
 			buildPhases = (
+				68645BE3FB3A4B785661BCC7 /* [CP] Check Pods Manifest.lock */,
 				A005FB3E216378550085AA62 /* Sources */,
 				A005FB3F216378550085AA62 /* Frameworks */,
 				A005FB40216378550085AA62 /* Resources */,
+				7590774253C69FC5B60EE54A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -137,6 +169,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		68645BE3FB3A4B785661BCC7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ConcurrencySample2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7590774253C69FC5B60EE54A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ConcurrencySample2/Pods-ConcurrencySample2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConcurrencySample2/Pods-ConcurrencySample2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A005FB3E216378550085AA62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -144,6 +215,8 @@
 			files = (
 				A0246ABE216397BE006D7F0C /* ImageFilter.swift in Sources */,
 				A005FB48216378550085AA62 /* ViewController.swift in Sources */,
+				A0F81FD32163F6930023F250 /* AsyncData.swift in Sources */,
+				A0F81FD72164039D0023F250 /* Async.swift in Sources */,
 				A005FB46216378550085AA62 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +361,7 @@
 		};
 		A005FB55216378590085AA62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA30C87F663DB75359209201 /* Pods-ConcurrencySample2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -306,6 +380,7 @@
 		};
 		A005FB56216378590085AA62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 959DC7E1AAD84CA7FB91F5D1 /* Pods-ConcurrencySample2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
